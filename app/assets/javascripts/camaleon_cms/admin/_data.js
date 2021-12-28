@@ -11,7 +11,7 @@ function cama_get_tinymce_settings(settings){
         content_css: tinymce_global_settings["custom_css"].join(","),
         convert_urls: false,
         //forced_root_block: '',
-        extended_valid_elements: 'i[*],div[*],p[*],li[*],a[*],ol[*],ul[*],span[*]',
+        extended_valid_elements: '*[*]',
         toolbar: "bold italic | alignleft aligncenter alignright alignjustify | fontselect fontsizeselect | bullist numlist | outdent indent | undo redo | link unlink image media | forecolor backcolor | styleselect template "+tinymce_global_settings["custom_toolbar"].join(","),
         image_caption: true,
         language: CURRENT_LOCALE,
@@ -33,7 +33,7 @@ function cama_get_tinymce_settings(settings){
                 tinymce.triggerSave();
                 $('textarea#'+editor.id).trigger('change');
             });
-            
+
             editor.on('PostProcess', function (ed) {
                 ed.content = ed.content.replace(/(<p><\/p>)/gi,'<br />');
             });
